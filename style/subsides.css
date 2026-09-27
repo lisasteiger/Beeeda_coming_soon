@@ -1,0 +1,344 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  background: #fff;
+}
+
+body {
+  font-family: "Google Sans", sans-serif;
+
+  /*
+     Die Subsite ist normal scrollbar.
+  */
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+/*
+   Das Logo bleibt fest.
+
+   Es wird NICHT mit dem Content
+   gescrollt oder animiert.
+*/
+
+.logo-layer {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+.logo-link {
+  position: absolute;
+
+  top: 0.1em;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: block;
+
+  pointer-events: auto;
+}
+
+.logo {
+  display: block;
+
+  width: 10vw;
+
+  max-width: 180px;
+  min-width: 80px;
+
+  height: auto;
+}
+
+/* =====================================================
+   SUBSITE
+===================================================== */
+
+.subsite {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+
+  padding-top: 100px;
+  padding-bottom: 150px;
+
+  /*
+     Beim Öffnen kommt die Subsite
+     von unten herein.
+  */
+
+  animation: subsite-in 0.9s cubic-bezier(0.77, 0, 0.175, 1) both;
+}
+
+/* =====================================================
+   SUBSITE VERLÄSST DIE SEITE
+===================================================== */
+
+body.subsite-leaving .subsite {
+  animation: subsite-out 0.9s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* =====================================================
+   SUBSITE EINFAHRT
+===================================================== */
+
+@keyframes subsite-in {
+  from {
+    transform: translateY(100vh);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* =====================================================
+   SUBSITE AUSFAHRT
+===================================================== */
+
+@keyframes subsite-out {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery {
+  width: 90vw;
+
+  margin: 0 auto;
+}
+
+/* =====================================================
+   GALLERY BILDMASKE
+===================================================== */
+
+.gallery-image {
+  position: relative;
+
+  width: 100%;
+
+  /*
+     DIE MASKE bestimmt das Format.
+     Das Originalformat des Bildes
+     spielt keine Rolle.
+  */
+
+  aspect-ratio: 16 / 8;
+
+  /*
+     Abstand zwischen den Bildern.
+  */
+
+  margin-bottom: 30px;
+
+  /*
+     Runde Ecken.
+  */
+
+  border-radius: 20px;
+
+  /*
+     Alles außerhalb der Maske
+     wird abgeschnitten.
+  */
+
+  overflow: hidden;
+
+  background: #eee;
+}
+
+/* =====================================================
+   BILD INNERHALB DER MASKE
+===================================================== */
+
+.gallery-image img {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  /*
+     Das komplette Objekt bleibt sichtbar.
+  */
+
+  object-fit: contain;
+
+  object-position: center;
+}
+
+/* =====================================================
+   TEXT-BEREICH
+===================================================== */
+
+.detail-content {
+  width: 90vw;
+
+  margin: 110px auto 0;
+}
+
+/* =====================================================
+   TITEL
+===================================================== */
+
+.detail-content h1 {
+  max-width: 900px;
+
+  margin: 0 0 25px;
+
+  font-size: clamp(2rem, 5vw, 5rem);
+
+  line-height: 1;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+  margin: 0 0 30px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   MATERIAL
+===================================================== */
+
+.materials {
+  margin: 0 0 30px;
+
+  font-size: 0.85rem;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   BESCHREIBUNG
+===================================================== */
+
+.description-text {
+  max-width: 700px;
+
+  margin: 0;
+
+  font-size: 1rem;
+
+  line-height: 1.45;
+}
+
+/* =====================================================
+   WEITERE INHALTE
+===================================================== */
+
+.additional-content {
+  width: 90vw;
+
+  margin: 120px auto;
+}
+
+/* =====================================================
+   H2
+===================================================== */
+
+.additional-content h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(1.8rem, 3vw, 3rem);
+
+  line-height: 1;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.additional-content p {
+  max-width: 700px;
+
+  margin: 0;
+
+  font-size: 1rem;
+
+  line-height: 1.45;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+  .logo {
+    width: 22vw;
+  }
+
+  .subsite {
+    padding-top: 90px;
+
+    padding-bottom: 100px;
+  }
+
+  .gallery {
+    width: 92vw;
+  }
+
+  .gallery-image {
+    aspect-ratio: 4 / 3;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+  }
+
+  .detail-content,
+  .additional-content {
+    width: 92vw;
+  }
+}
